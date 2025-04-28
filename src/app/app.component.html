@@ -1,13 +1,15 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <a href="/products" mat-button>Products</a>
-        <a href="/cart" mat-button>Cart</a>
-    </mat-toolbar-row>
+<mat-toolbar color="primary" class="site-header">
+    <span class="logo-text">Animal Art</span>
+    <span class="header-spacer"></span>
+    <a mat-button class="nav-link" routerLink="/products" routerLinkActive="active-link">Products</a>
+    <a mat-button class="nav-link" routerLink="/cart" routerLinkActive="active-link">
+        <mat-icon>shopping_cart</mat-icon> Cart
+    </a>
 </mat-toolbar>
 
-<div class="container text-center">
-    <h1>Amazing Animal Paintings</h1>
-    <h3>Make your home a special place with our beautiful and unique artwork.</h3>
+<div class="hero-section">
+    <h1 class="hero-title">Amazing Animal Paintings</h1>
+    <h3 class="hero-subtitle">Make your home a special place with our beautiful and unique artwork.</h3>
 </div>
 
-<router-outlet />
+<router-outlet></router-outlet>

@@ -1,29 +1,40 @@
 <div class="container-sm">
-    <h1>Your Cart</h1>
+    <h1 class="cart-title">Your Cart</h1>
 
-    <mat-card>
+    <div class="cart-container">
+        <div *ngIf="cartItems.length === 0" class="empty-cart">
+            <mat-icon class="empty-cart-icon">shopping_cart</mat-icon>
+            <h3>Your cart is empty</h3>
+            <p>Go back to the products page to add some beautiful paintings to your cart!</p>
+            <button mat-raised-button color="primary" routerLink="/products">Browse Products</button>
+        </div>
 
-        <mat-list>
+        <ng-container *ngIf="cartItems.length > 0">
+            <div *ngFor="let item of cartItems" class="cart-item">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <div class="cart-item-name">{{item.name}}</div>
+                        <div class="cart-item-price">{{item.price | currency:'USD'}}</div>
+                    </div>
+                    <button mat-icon-button color="warn" (click)="removeItem(item)">
+                        <mat-icon>remove_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
 
-            <mat-list-item *ngFor="let item of cartItems">
-                <span matListItemTitle>{{item.name}}</span>
-                <span matListItemLine>{{item.price | currency:'USD' }}</span>
-            </mat-list-item>
+            <div class="cart-total">
+                <span class="cart-total-label">Total</span>
+                <span class="cart-total-price">{{totalPrice | currency:'USD'}}</span>
+            </div>
 
-            <mat-list-item>
-                <span class="price" matListItemTitle>Total (USD)</span>
-                <span class="price" matListItemLine>{{totalPrice | currency:'USD' }}</span>
-            </mat-list-item>
-
-            <mat-list-item class="text-right">
-                <button mat-flat-button (click)="clearCart()">Clear</button>
-            </mat-list-item>
-
-            <mat-list-item class="text-right">
-                <button mat-raised-button color="accent" (click)="checkout()">Checkout</button>
-            </mat-list-item>
-
-        </mat-list>
-
-    </mat-card>
+            <div class="cart-actions">
+                <button mat-stroked-button color="warn" (click)="clearCart()">
+                    <mat-icon>remove_shopping_cart</mat-icon> Clear Cart
+                </button>
+                <button mat-raised-button color="primary" (click)="checkout()">
+                    <mat-icon>payment</mat-icon> Checkout
+                </button>
+            </div>
+        </ng-container>
+    </div>
 </div>

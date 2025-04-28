@@ -1,5 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-@import "@angular/material/prebuilt-themes/azure-blue.css";
+/* Global styles */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap');
 
 html,
 body {
@@ -9,17 +10,18 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: rgb(244, 244, 244);
+    background-color: #f8f9fa;
+    color: #333;
 }
 
 .container {
-    padding: 50px;
+    padding: 30px;
     max-width: 1200px;
     margin: auto;
 }
 
 .container-sm {
-    padding: 50px;
+    padding: 30px;
     max-width: 800px;
     margin: auto;
 }
@@ -30,4 +32,33 @@ body {
 
 .text-right {
     text-align: right;
+}
+
+/* Material overrides */
+.mat-mdc-card {
+    border-radius: 8px !important;
+}
+
+/* Animation styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+
+    .container,
+    .container-sm {
+        padding: 20px 16px;
+    }
 }
